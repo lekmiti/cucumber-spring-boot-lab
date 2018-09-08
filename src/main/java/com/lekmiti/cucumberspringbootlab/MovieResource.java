@@ -16,7 +16,7 @@ public class MovieResource {
 
     @GetMapping("/all")
     public ResponseEntity<List<String>> getAllMovies() {
-        List<String> movies = Arrays.asList("movie_1, movie_2, movie_3");
+        List<String> movies = Arrays.asList("Catch me if you can", "Transformers ", "Transporter");
         return new ResponseEntity<>(movies, new HttpHeaders(), HttpStatus.OK);
     }
 }
