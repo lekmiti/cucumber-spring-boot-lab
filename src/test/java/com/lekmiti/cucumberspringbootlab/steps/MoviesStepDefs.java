@@ -55,16 +55,22 @@ public class MoviesStepDefs {
         response  = this.testRestTemplate.getForEntity(url, String.class);
    }
 
-    @Then("^the client get http code (\\d+)")
+    @Then("^the client get http code (\\d+)$")
     public void the_client_get_http_code(int givenHttpCode){
         assertThat(response.getStatusCodeValue()).isEqualTo(givenHttpCode);
     }
 
-    @And("the client get the following list of movies:")
+    @And("the client get the following list of movies:$")
     public void the_client_get_the_following_list_of_movies(List<String> givenMovies){
         givenMovies.forEach(movie -> {
             assertThat(response.getBody()).contains(movie);
         });
     }
+
+    @Then("^the client does not get any movie$")
+    public void the_client_does_not_get_any_movie(){
+        assertThat(response.getBody()).isNull();
+    }
+
 
 }
