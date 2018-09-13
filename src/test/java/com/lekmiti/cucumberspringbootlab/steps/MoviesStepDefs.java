@@ -1,6 +1,6 @@
 package com.lekmiti.cucumberspringbootlab.steps;
 
-import com.lekmiti.cucumberspringbootlab.MovieResource;
+import com.lekmiti.cucumberspringbootlab.resources.MovieResource;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

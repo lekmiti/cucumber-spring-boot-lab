@@ -1,4 +1,4 @@
-Feature: movies webservices
+Feature: movie endpoints
 
   Scenario: client get all movies
     When the client calls "/movie/all"
