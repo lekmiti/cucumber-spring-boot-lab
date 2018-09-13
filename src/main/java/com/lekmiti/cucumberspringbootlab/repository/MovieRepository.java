@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public class MovieRepository {
 
-    private List<String> movies = Arrays.asList("Catch me if you can", "Transformers ", "Transporter");
+    private List<String> movies = Arrays.asList("Catch me if you can", "Transformers", "Transporter");
 
     public List<String> getAllMovies() {
         return movies;

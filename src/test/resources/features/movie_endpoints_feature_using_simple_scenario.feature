@@ -1,4 +1,4 @@
-Feature: movie endpoints
+Feature: movie endpoints feature using simple scenario
 
   Scenario: client get all movies
     When the client calls "/movie/all"

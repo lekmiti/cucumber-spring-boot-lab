@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -54,6 +55,17 @@ public class MoviesStepDefs {
     @Then("^the client get http code (\\d+)$")
     public void the_client_get_http_code(int givenHttpCode){
         assertThat(response.getStatusCodeValue()).isEqualTo(givenHttpCode);
+    }
+
+
+    @And("^the client get movie \"([^\"]*)\"$")
+    public void the_client_get_movie(String movie){
+        if( "null".equalsIgnoreCase(movie))
+            assertThat(response.getBody()).isNull();
+        else
+            assertThat(response.getBody()).isEqualTo(movie);
+
+
     }
 
     @And("the client get the following list of movies:$")
