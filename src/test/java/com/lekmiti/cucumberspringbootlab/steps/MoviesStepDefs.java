@@ -15,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
@@ -45,6 +44,7 @@ public class MoviesStepDefs {
 
     }
 
+
     @When("^the client calls \"([^\"]*)\"$")
     public void the_client_calls(String givenUrl){
         assertThat(movieResource).isNotNull();
@@ -64,8 +64,6 @@ public class MoviesStepDefs {
             assertThat(response.getBody()).isNull();
         else
             assertThat(response.getBody()).isEqualTo(movie);
-
-
     }
 
     @And("the client get the following list of movies:$")
@@ -78,6 +76,14 @@ public class MoviesStepDefs {
     @Then("^the client does not get any movie$")
     public void the_client_does_not_get_any_movie(){
         assertThat(response.getBody()).isNull();
+    }
+
+
+    @Then("^the client get status \"([^\"]*)\"$")
+    public void the_client_get_status(String status){
+
+        String expectedStatus = new StringBuilder("{\"status\":\"").append(status).append("\"}").toString();
+        assertThat(response.getBody()).isEqualTo(expectedStatus);
     }
 
 
