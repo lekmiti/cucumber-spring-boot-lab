@@ -1,5 +1,10 @@
 Feature: movie endpoints feature using simple scenario
 
+  Background: the system must be up
+    Given the client calls "/actuator/health"
+    Then the client get http code 200
+    And  the client get status "UP"
+
   Scenario: client get all movies
     When the client calls "/movie/all"
     Then the client get http code 200

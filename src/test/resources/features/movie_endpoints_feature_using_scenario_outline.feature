@@ -1,5 +1,10 @@
 Feature: movie endpoints feature using scenario outline
 
+  Background: the system must be up
+    Given the client calls "/actuator/health"
+    Then the client get http code 200
+    And  the client get status "UP"
+
   Scenario: client get all movies
     When the client calls "/movie/all"
     Then the client get http code 200
@@ -8,7 +13,7 @@ Feature: movie endpoints feature using scenario outline
       | Transformers           |
       | Transporter            |
 
-  Scenario Outline:: client get movie by index
+  Scenario Outline: client get movie by index
     When the client calls "<resourcePath>"
     Then the client get http code <httpCode>
     And  the client get movie "<movie>"
